@@ -12,7 +12,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#1e2538d5] to-transparent"></div>
       </div>
 
-      <div className="relative z-10 p-3">
+      <div className="relative z-10 p-3 xl:py-4 px-20">
       
         <Header />
         <Link href={"/cardFilm"}>GO</Link>
