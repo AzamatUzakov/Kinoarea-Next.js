@@ -1,0 +1,19 @@
+.truncate-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 180px;
+}
+
+.bg {
+    width: 100%;
+    opacity: 0.6;
+    object-fit: cover;
+    background: linear-gradient(top, #1e2538 5%, rgba(0, 0, 0, 0.4) 100%);
+    border-bottom-right-radius: 8px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    box-shadow:
+        inset 0px -20px 20px 6px #1E2538,
+        0px -12px 10px -10px #1E2538;
+    transition: .5s ease-in;
+}

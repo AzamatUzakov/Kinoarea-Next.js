@@ -79,7 +79,7 @@ const Header = () => {
                             <FaTwitter color="#686868" />
                         </div>
                     </div>
-                    <ul className="hidden items-center text-[15px]  gap-1 font-semibold text-white w-[50%] justify-between mx-auto mt-6 lg:flex">
+                    <ul className="hidden items-center text-[15px]  gap-1 font-semibold text-white w-[50%] justify-between mx-auto mt-6 lg:flex lg:w-[60%]">
                         <li className="relative group w-fit cursor-pointer">
                             Афиша
                             <span className="absolute left-0 bottom-0  h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
