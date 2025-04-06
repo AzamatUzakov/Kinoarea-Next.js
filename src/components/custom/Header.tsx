@@ -118,7 +118,7 @@ const Header = () => {
 
                 </div>
 
-                <ul className="hidden items-center text-[15px]  gap-1 font-semibold text-white w-[80%] justify-between mx-auto mt-6 md:flex lg:hidden">
+                <ul className="hidden items-center text-[13px]  font-semibold text-white w-[75%] justify-between  mx-auto mt-6 md:flex md:gap-1 lg:hidden">
                     <li className="relative group w-fit cursor-pointer">
                         Афиша
                         <span className="absolute left-0 bottom-0  h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
