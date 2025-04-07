@@ -4,6 +4,7 @@ import NowCinema from "@/components/custom/NowCinema";
 import "../styles/custom.css"
 import Link from "next/link";
 import { useState } from "react";
+import NewTrailers from "@/components/custom/NewTrailers";
 export default function Home() {
 
   const [mainBg, setMainBg] = useState<string>("/defoultBg.png")
@@ -18,8 +19,14 @@ export default function Home() {
         <Header />
 
         <NowCinema setMainBg={setMainBg} />
+        
+        <NewTrailers />
+        
+        
         <Link href={"/cardFilm"}>GO</Link>
 
+        
+        
         <Footer />
       </div>
     </div>

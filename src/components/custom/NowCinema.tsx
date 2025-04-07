@@ -10,6 +10,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { Button } from "../ui/button";
+import { options } from "@/exports";
 
 interface NowCinemaProps {
     adult: boolean;
@@ -27,7 +28,7 @@ interface NowCinemaProps {
     vote_average: number;
     vote_count: number;
     setMainBg: (bg: string) => void;
-    mainBg: string
+    
 }
 
 
@@ -41,16 +42,9 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
     const [visibleCount, setVisibleCount] = useState<number>(8)
     const NowUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
     const generesUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
-    const AuthorizationUrl = process.env.NEXT_PUBLIC_AUTHORIZATION
 
 
-    const options = {
-        headers: {
-            accept: 'application/json',
-            Authorization: AuthorizationUrl || ""
-        }
-    };
-
+    
     useEffect(() => {
         fetch(NowUrl, options)
             .then((res) => res.json())
@@ -58,7 +52,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
 
         fetch(generesUrl, options)
             .then((res) => res.json())
-            .then((res) => {
+            .then((res: { genres: { id: number; name: string }[] }) => {
                 const allGenres = res.genres;
 
                 const genresMap: { [key: number]: string[] } = {};
@@ -70,7 +64,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
 
                 setGenres(genresMap);
             });
-    }, [NowUrl, generesUrl, cinema]);
+    }, [NowUrl, generesUrl]);
 
     const handleMouseEnter = (id: number, backdropPath: string) => {
         setHoverStates((prev) => ({ ...prev, [id]: true }));
@@ -161,7 +155,8 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                                     className="w-[178px] h-[250px]  relative bg-cover bg-no-repeat bg-center rounded-lg md:h-[286px] md:w-[210px] lg:w-[202px] lg:h-[297px] xl:w-[290px] xl:h-[420px] 2xl:w-[340px] 2xl:h-[480px]"
                                     style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})` }}
                                 >
-                                    <div className="absolute cursor-pointer top-2 z-10 right-2 bg-[#89CB36] w-[38px] h-[21px] text-center text-[12px] flex items-center justify-center font-bold rounded-[5px] text-white">
+                                    <div className=
+                                        {`absolute cursor-pointer top-2 z-10 right-2 w-[38px] h-[21px] text-center text-[12px] flex items-center justify-center font-bold rounded-[5px] text-white ${item.vote_average > 6 && "bg-[#34EA16]" || item.vote_average === 6 && "bg-[#89CB36]" || item.vote_average < 6 && "bg-[#CB6C36]" }`}>
                                         {item.vote_average.toFixed(1)}
                                     </div>
 

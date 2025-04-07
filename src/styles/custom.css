@@ -17,3 +17,22 @@
         0px -12px 10px -10px #1E2538;
     transition: .5s ease-in;
 }
+
+.scrollbar-custom::-webkit-scrollbar {
+    height: 6px;
+    }
+.scrollbar-custom{
+    rotate: 180deg;
+}
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: #1a1e2d;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #3657CB;
+    border-radius: 10px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background-color: #4e6fff;
+}
