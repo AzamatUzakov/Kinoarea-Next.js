@@ -47,7 +47,7 @@ const ExpectedNew : React.FC<ExpectedNewProps> = () => {
     const [totalSlides, setTotalSlides] = useState(0)
     const [genres, setGenres] = useState<{ [key: number]: string[] }>({});
 
-    const popularUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+    const popularUrl = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
     const generesUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
 
     useEffect(() => {
@@ -93,45 +93,24 @@ const ExpectedNew : React.FC<ExpectedNewProps> = () => {
 
     return (
         <>
-            <div className="mt-8">
-                <div className="flex justify-center items-center md:flex-col md:items-start md:items-center xl:flex-row xl:justify-between xl:items-center">
-                    <h1 className="font-black text-2xl text-white text-nowrap md:text-4xl">Популярные фильмы</h1>
-                    <img src="/line.png" alt="line" className="hidden mt-2 xl:block" />
-                    <div className="mb-[4px] md:hidden">
-                        <Sheet>
-                            <SheetTrigger className="h-7 w-7 flex items-center justify-center rounded-[5px] cursor-pointer transition-all ease-in">
-                                <RxHamburgerMenu color="white" size={20} className="mt-2 cursor-pointer" />
-                            </SheetTrigger>
-                            <SheetContent side="top" className="bg-[#1e2538c9]">
-                                <SheetHeader>
-                                    <SheetTitle className="text-center mx-auto"><img src="/mainLogo.png" alt="" /></SheetTitle>
-                                    <SheetDescription className="text-center mx-auto mt-3 pb-5">
-                                        <ul className="flex flex-col items-center text-sm leading-10 font-semibold text-white">
-                                            {timesArr.map((str, indx) => (
-                                                <li key={indx} className="relative group w-fit cursor-pointer">
-                                                    {str}
-                                                    <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </SheetDescription>
-                                </SheetHeader>
-                            </SheetContent>
-                        </Sheet>
+            <div className="mt-[60px] mb-11">
+                <div className="flex flex-col  justify-between  items-center md:flex-row md:items-center  xl:flex-row xl:justify-between xl:items-center">
+                    <h1 className="font-black text-2xl text-white text-nowrap md:text-4xl">Ожидаемые новинки</h1>
+                    <div className="flex justify-center mt-5 gap-4 cursor-pointer md:mt-2 ">
+
+                        <div>
+                            <FaArrowLeftLong ref={prevRef} color="white" size={20} />
+                        </div>
+
+                        <p className="font-medium text-[17px] text-white no-select no-select-context"> {activeSlide + 1} / {popular.length}</p>
+                        <div>
+                            <FaArrowLeftLong ref={nextRef} color="white" size={20} className="rotate-180 " />
+                        </div>
                     </div>
-                    <div className="hidden mt-2 md:flex w-[70%] justify-between xl:w-[40%]">
-                        {timesArr.map((str, indx) => (
-                            <div key={indx} className="font-bold text-[15px] text-[#818181c5]">
-                                <p
-                                    onClick={() => setActText(indx)}
-                                    className={`cursor-pointer transition-all duration-200 ease-in
-                                    ${actText === indx ? "text-white" : "text-[#818181c5]"}`}>{str}</p>
-                            </div>
-                        ))}
-                    </div>
+                    
                 </div>
 
-                <div className="relative mt-[50px]">
+                <div className="relative mt-[20px]">
                     <Swiper
                         modules={[Navigation, Pagination]}
                         navigation={{
@@ -191,17 +170,7 @@ const ExpectedNew : React.FC<ExpectedNewProps> = () => {
                         ))}
                     </Swiper>
 
-                    <div className="flex justify-center mt-5 gap-4 cursor-pointer ">
-
-                        <div>
-                            <FaArrowLeftLong ref={prevRef} color="white" size={20} />
-                        </div>
-
-                        <p className="font-medium text-[17px] text-white no-select no-select-context"> {activeSlide + 1} / {popular.length}</p>
-                        <div>
-                            <FaArrowLeftLong ref={nextRef} color="white" size={20} className="rotate-180 " />
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </>
