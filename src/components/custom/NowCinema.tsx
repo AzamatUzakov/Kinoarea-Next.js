@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "../ui/button";
 import { options } from "@/exports";
+import Link from "next/link";
 
 interface NowCinemaProps {
     adult: boolean;
@@ -45,7 +46,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
     const AuthorizationUrl = process.env.NEXT_PUBLIC_AUTHORIZATION
 
 
-    
+
     useEffect(() => {
         fetch(NowUrl, options)
             .then((res) => res.json())
@@ -74,7 +75,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
 
     const handleMouseLeave = (id: number) => {
         setHoverStates((prev) => ({ ...prev, [id]: false }));
-        
+
     };
     const showMore = () => {
         setVisibleCount(prev => prev + 12)
@@ -150,14 +151,14 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                     {<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-4 mt-[50px]">
                         {cinema.slice(0, visibleCount).map((item) => (
                             <div key={item.id}>
-                                <div
+                                <Link href={"/cardFilm"}>  <div
                                     onMouseEnter={() => handleMouseEnter(item.id, item.backdrop_path)}
                                     onMouseLeave={() => handleMouseLeave(item.id)}
                                     className="w-[178px] h-[250px]  relative bg-cover bg-no-repeat bg-center rounded-lg md:h-[286px] md:w-[210px] lg:w-[202px] lg:h-[297px] xl:w-[290px] xl:h-[420px] 2xl:w-[340px] 2xl:h-[480px]"
                                     style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})` }}
                                 >
                                     <div className=
-                                        {`absolute cursor-pointer top-2 z-10 right-2 w-[38px] h-[21px] text-center text-[12px] flex items-center justify-center font-bold rounded-[5px] text-white ${item.vote_average > 6 && "bg-[#34EA16]" || item.vote_average === 6 && "bg-[#89CB36]" || item.vote_average < 6 && "bg-[#CB6C36]" }`}>
+                                        {`absolute cursor-pointer top-2 z-10 right-2 w-[38px] h-[21px] text-center text-[12px] flex items-center justify-center font-bold rounded-[5px] text-white ${item.vote_average > 6 && "bg-[#34EA16]" || item.vote_average === 6 && "bg-[#89CB36]" || item.vote_average < 6 && "bg-[#CB6C36]"}`}>
                                         {item.vote_average.toFixed(1)}
                                     </div>
 
@@ -171,9 +172,12 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                                         </Button>
                                     </div>
                                 </div>
-                                <p className="font-semibold text-white text-[15px] truncate-text">{item.title}</p>
-{/*                                 <p className="text-[#F2F60F]  text-[12px] truncate-text">{genres[item.id] ? genres[item.id].join(", ") : "Жанры не доступны("}</p>
- */}                            </div>
+                                    <p className="font-semibold text-white text-[15px] truncate-text">{item.title}</p>
+                                    {/*                                 x>
+<p className="text-[#F2F60F]  text-[12px] truncate-text">{genres[item.id] ? genres[item.id].join(", ") : "Жанры не доступны("}</p>
+ */}
+                                </Link>
+                            </div>
                         ))}
 
                     </div>
