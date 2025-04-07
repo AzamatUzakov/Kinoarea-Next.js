@@ -41,7 +41,6 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
 
     }, [PopularUrl])
 
-    console.log(trailer);
 
     return (
         <>

@@ -28,7 +28,7 @@ interface NowCinemaProps {
     vote_average: number;
     vote_count: number;
     setMainBg: (bg: string) => void;
-    
+    mainBg: string
 }
 
 
@@ -42,6 +42,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
     const [visibleCount, setVisibleCount] = useState<number>(8)
     const NowUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
     const generesUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
+    const AuthorizationUrl = process.env.NEXT_PUBLIC_AUTHORIZATION
 
 
     
@@ -171,8 +172,8 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                                     </div>
                                 </div>
                                 <p className="font-semibold text-white text-[15px] truncate-text">{item.title}</p>
-                                <p className="text-[#F2F60F]  text-[12px] truncate-text">{genres[item.id] ? genres[item.id].join(", ") : "Жанры не доступны("}</p>
-                            </div>
+{/*                                 <p className="text-[#F2F60F]  text-[12px] truncate-text">{genres[item.id] ? genres[item.id].join(", ") : "Жанры не доступны("}</p>
+ */}                            </div>
                         ))}
 
                     </div>
