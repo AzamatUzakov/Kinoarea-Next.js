@@ -6,6 +6,8 @@ import Link from "next/link";
 import { useState } from "react";
 import NewTrailers from "@/components/custom/NewTrailers";
 import PopularFilm from "@/components/custom/PopularFilm";
+import PopularPerson from "@/components/custom/PopularPerson";
+import ExpectedNew from "@/components/custom/ExpectedNew ";
 export default function Home() {
 
   const [mainBg, setMainBg] = useState<string>("/defoultBg.png")
@@ -23,9 +25,10 @@ export default function Home() {
 
         <NewTrailers />
         <PopularFilm />
+        <PopularPerson />
+        <ExpectedNew />
 
-
-{/*         <Link href={"/cardFilm"}>GO</Link>
+        {/*         <Link href={"/cardFilm"}>GO</Link>
  */}
 
 

@@ -8,17 +8,6 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet";
 
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
-import {
-    Card,
-    CardContent
-} from "@/components/ui/card";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -32,7 +21,7 @@ import { options } from "@/exports";
 import { Button } from "../ui/button";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
-interface PopularFilmProps {
+interface ExpectedNewProps {
     adult: boolean;
     backdrop_path: string;
     genre_ids: number[];
@@ -50,9 +39,9 @@ interface PopularFilmProps {
 }
 const timesArr: string[] = ["Всё время", "2020", "2019", "2018", "2017", "2016", "2015"];
 
-const PopularFilm: React.FC<PopularFilmProps> = () => {
+const ExpectedNew : React.FC<ExpectedNewProps> = () => {
     const [actText, setActText] = useState<null | string | number>(0);
-    const [popular, setPopular] = useState<PopularFilmProps[]>([]);
+    const [popular, setPopular] = useState<ExpectedNewProps[]>([]);
     const [hoverStates, setHoverStates] = useState<{ [key: number]: boolean }>({});
     const [activeSlide, setActiveSlide] = useState(0);
     const [totalSlides, setTotalSlides] = useState(0)
@@ -219,4 +208,4 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
     );
 }
 
-export default PopularFilm;
+export default ExpectedNew ;
