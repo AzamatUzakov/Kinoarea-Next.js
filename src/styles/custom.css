@@ -46,3 +46,8 @@
 .no-select-context {
     pointer-events: none;
 }
+
+
+.webkit::-webkit-scrollbar{
+    display: none;
+}

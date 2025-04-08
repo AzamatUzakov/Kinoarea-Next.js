@@ -1,7 +1,8 @@
-export const options = {
+
+export const options: RequestInit = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION
-    }
+        Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION || '',
+    },
 };

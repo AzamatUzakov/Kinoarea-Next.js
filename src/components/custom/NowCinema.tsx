@@ -39,11 +39,11 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
     const [actText, setActText] = useState<null | string | number>(0)
     const [hoverStates, setHoverStates] = useState<{ [key: number]: boolean }>({});
     const [cinema, setCinema] = useState<NowCinemaProps[]>([])
-    const [genres, setGenres] = useState<{ [key: number]: string[] }>({});
+    const [genress, setGenres] = useState<{ [key: number]: string }>({});
     const [visibleCount, setVisibleCount] = useState<number>(8)
     const NowUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
     const generesUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=en'
-    const AuthorizationUrl = process.env.NEXT_PUBLIC_AUTHORIZATION
+
 
 
 
@@ -54,20 +54,21 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
 
         fetch(generesUrl, options)
             .then((res) => res.json())
-            .then((res: { genres: { id: number; name: string }[] }) => {
-                const allGenres = res.genres;
+            .then((res) => {
 
-                const genresMap: { [key: number]: string[] } = {};
-                cinema.forEach((movie) => {
-                    genresMap[movie.id] = movie.genre_ids
-                        .map((id) => allGenres.find((genre) => genre.id === id)?.name)
-                        .filter(Boolean) as string[];
+                const genresMap: { [key: number]: string } = {};
+                res.genres.forEach((gen: { id: number; name: string }) => {
+                    genresMap[gen.id] = gen.name;
                 });
-
-                setGenres(genresMap);
+                setGenres(genresMap);   
             });
-    }, [NowUrl, generesUrl]);
 
+
+    }, [NowUrl, generesUrl]);
+  
+    const getGenresNames = (genreIds: number[]) => {
+        return genreIds.map(id => genress[id] || 'Неизвестно').join(', ');
+    };
     const handleMouseEnter = (id: number, backdropPath: string) => {
         setHoverStates((prev) => ({ ...prev, [id]: true }));
         setMainBg(`https://image.tmdb.org/t/p/w500${backdropPath || 'defaultBackdrop.jpg'}`);
@@ -148,36 +149,51 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
 
 
                 <div className="w-full">
-                    {<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-4 mt-[50px]">
+                    {<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-4 mt-[50px] justify-between w-full">
                         {cinema.slice(0, visibleCount).map((item) => (
-                            <div key={item.id}>
-                                <Link href={"/cardFilm"}>  <div
-                                    onMouseEnter={() => handleMouseEnter(item.id, item.backdrop_path)}
-                                    onMouseLeave={() => handleMouseLeave(item.id)}
-                                    className="w-[178px] h-[250px]  relative bg-cover bg-no-repeat bg-center rounded-lg md:h-[286px] md:w-[210px] lg:w-[202px] lg:h-[297px] xl:w-[290px] xl:h-[420px] 2xl:w-[340px] 2xl:h-[480px]"
-                                    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.poster_path})` }}
-                                >
-                                    <div className=
-                                        {`absolute cursor-pointer top-2 z-10 right-2 w-[38px] h-[21px] text-center text-[12px] flex items-center justify-center font-bold rounded-[5px] text-white ${item.vote_average > 6 && "bg-[#34EA16]" || item.vote_average === 6 && "bg-[#89CB36]" || item.vote_average < 6 && "bg-[#CB6C36]"}`}>
-                                        {item.vote_average.toFixed(1)}
+                            <div key={item.id} className="relative w-full max-w-[340px] overflow-hidden group cursor-pointer">
+                                <Link href="/cardFilm">
+                                    <div
+                                        onMouseEnter={() => handleMouseEnter(item.id, item.backdrop_path)}
+                                        onMouseLeave={() => handleMouseLeave(item.id)}
+                                        className="relative group-hover:opacity-80 transition duration-300 rounded-[15px] overflow-hidden"
+                                    >
+                                        {/* Адаптивное изображение */}
+                                        <img
+                                            src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                                            alt={item.title}
+                                            className="w-full h-auto object-cover transition duration-300 rounded-[15px]"
+                                        />
+
+                                        <div className="absolute inset-0 bg-[#3657CB]/70 opacity-0 group-hover:opacity-100 transition duration-300 rounded-[15px]"></div>
+
+                                        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${hoverStates[item.id] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+                                            }`}>
+                                            <Button
+                                                className={`max-w-full cursor-pointer bg-white text-[#3657CB] font-bold text-sm py-[22px] transition-all duration-500 ease-out hover:scale-[0.9] hover:bg-white ${hoverStates[item.id] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                                                    }`}
+                                            >
+                                                Карточка фильма
+                                            </Button>
+                                        </div>
                                     </div>
 
-                                    <div
-                                        className={`absolute top-0 left-0 z-[3] bg-[#3657CBA6] w-full h-full rounded-lg flex items-center justify-center transition-all duration-300 ease-in-out cursor-pointer ${hoverStates[item.id] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'}`}
-                                    >
-                                        <Button
-                                            className={`max-w-full cursor-pointer bg-white text-[#3657CB] font-bold text-sm py-[22px] transition-all duration-500 ease-out  hover:scale-[0.9] hover:bg-white ${hoverStates[item.id] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                                        >
-                                            Карточка фильма
-                                        </Button>
+                                    <div className={`absolute top-2 right-2 text-white text-sm font-bold rounded-[8px] px-2 py-[2px] z-10 ${item.vote_average > 6
+                                        ? "bg-[#34EA16]"
+                                        : item.vote_average === 6
+                                            ? "bg-[#89CB36]"
+                                            : "bg-[#CB6C36]"
+                                        }`}>
+                                        {item.vote_average.toFixed(1)}
                                     </div>
-                                </div>
-                                    <p className="font-semibold text-white text-[15px] truncate-text">{item.title}</p>
-                                    {/*                                 x>
-<p className="text-[#F2F60F]  text-[12px] truncate-text">{genres[item.id] ? genres[item.id].join(", ") : "Жанры не доступны("}</p>
- */}
+                                    <div className="px-2 pb-3 pt-2 z-10">
+                                        <p className="text-white text-[16px] font-bold leading-[20px] truncate">{item.title}</p>
+                                        <p className="text-[#F2F60F] text-[14px] truncate">
+                                            {getGenresNames(item.genre_ids)}                                        </p>
+                                    </div>
                                 </Link>
                             </div>
+
                         ))}
 
                     </div>

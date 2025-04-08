@@ -28,7 +28,6 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
     const [person, setPerson] = useState<PopularPersonProps[]>([])
 
     const personUrl = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1"
-    const randomNumber: number = 0;
 
 
     useEffect(() => {
@@ -38,8 +37,6 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
             .then(res => setPerson(res.results)
             )
     }, [])
-
-    console.log(person);
 
     return (
         <>
@@ -119,27 +116,29 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
                         </div>
 
                         <div className="bg-[#1B2133] rounded-[10px] p-5 mt-2 xl:w-[30%] xl:mt-0">
-                            {person.slice(2, 7).map((item, index, randomNumber) => (
-                                randomNumber = Math.floor(Math.random() * (70 - 20 + 1)) + 20,
-                                <div key={item.id} className="">
-                                    <div className="flex justify-between items-center">
-                                        <div>
-                                            <p className="font-bold text-[15px] text-white">{item?.name}</p>
-                                            <p className="font-semibold text-[11px] text-[#3B486B]">{item?.original_name}</p>
+                            {person.slice(2, 7).map((item, index) => {
+                                const randomNumber = Math.floor(Math.random() * (70 - 20 + 1)) + 20;
+
+                                return (
+                                    <div key={item.id} className="">
+                                        <div className="flex justify-between items-center">
+                                            <div>
+                                                <p className="font-bold text-[15px] text-white">{item?.name}</p>
+                                                <p className="font-semibold text-[11px] text-[#3B486B]">{item?.original_name}</p>
                                                 <p className="text-[#F2F60F] font-normal text-[11px]">{randomNumber} лет</p>
-                                        </div>
+                                            </div>
                                             <p className="font-semibold text-[15px] text-[#F2F60F]">{index + 1}-место</p>
-
+                                        </div>
+                                        <hr className="border-0 h-[2px] w-full bg-[#1E2538]" />
                                     </div>
-                                    <hr className="border-0 h-[2px] w-full bg-[#1E2538]" />
-                                </div>
-
-                            ))}
-                        </div>
+                                );
+                            })}
 
                     </div>
+
                 </div>
-            </div >
+            </div>
+        </div >
 
         </>
     );
