@@ -69,7 +69,7 @@ const EndNews: React.FC<EndNewsProps> = () => {
                                     <div className="absolute inset-0 bg-black opacity-20 rounded-[10px]"></div>
                                     <div className="flex flex-col h-full justify-between relative z-10">
                                         <p className="flex items-center text-white gap-1 font-bold text-[12px]">15 Апр 2020</p>
-                                        <p className="font-black text-[12px] leading-5 text-white">Как изменили Соника с последнего анонса </p>
+                                        <p className="font-black text-[12px] leading-5 max-full text-white">{i.name}</p>
                                     </div>
                                 </div>
 

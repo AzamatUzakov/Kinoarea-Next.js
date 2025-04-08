@@ -1,14 +1,17 @@
+import { useState } from "react";
+import "../styles/custom.css"
+import Link from "next/link";
+
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";
 import NowCinema from "@/components/custom/NowCinema";
-import "../styles/custom.css"
-import Link from "next/link";
-import { useState } from "react";
 import NewTrailers from "@/components/custom/NewTrailers";
 import PopularFilm from "@/components/custom/PopularFilm";
 import PopularPerson from "@/components/custom/PopularPerson";
 import ExpectedNew from "@/components/custom/ExpectedNew ";
 import EndNews from "@/components/custom/EndNews";
+
+
 export default function Home() {
 
   const [mainBg, setMainBg] = useState<string>("/defoultBg.png")

@@ -32,6 +32,9 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
     const PopularUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
 
 
+    const [vidoe, setVideo] = useState<string >("")
+
+
     useEffect(() => {
 
         fetch(PopularUrl, options)
@@ -40,6 +43,21 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
             )
 
     }, [PopularUrl])
+
+
+    const video = (id: number) => {
+        fetch(`https://api.themoviedb.org/3/movie/${id}/videos`)
+            .then(res => res.json())
+            .then(res => {
+
+                const selectMovie = res.results[0]
+                setVideo(selectMovie)
+
+            })
+    }
+
+
+
 
 
     return (
@@ -51,7 +69,7 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                     <p className="flex text-white items-center gap-2 cursor-pointer transition-all duration-150 ease-in font-medium text-lg mt-2  hover:text-gray-300">Все трейлеры <FaArrowRightLong color="white" /></p>
                 </div>
                 <div >
-                    <iframe src="https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagTC"
+                    <iframe src={vidoe !== "" ? `https://www.youtube.com/embed/${vidoe?.key}` : "https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT"}
                         className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
                     ></iframe>
                     <div className="flex justify-between mt-2">
@@ -90,8 +108,13 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                 <div className="flex items-center gap-2 overflow-y-auto w-full scrollbar-custom mt-5 ">
                     {trailer.map((item) => (
                         <div key={item.id} className="transform rotate-180 pt-4">
-                            <div className="group w-[178px] h-[127px] relative cursor-grab bg-no-repeat bg-center bg-cover rounded-[10px] md:w-[200px] md:h-[130px] xl:w-[260px] xl:h-[180px]"
-                                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})` }}>
+                            <div
+                                className="group w-[178px] h-[127px] relative cursor-grab bg-no-repeat bg-center bg-cover rounded-[10px] md:w-[200px] md:h-[130px] xl:w-[260px] xl:h-[180px]"
+                                style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})` }}
+                                onClick={() => {
+                                        video(item?.id)
+                                }}
+                            >
 
                                 <TbPlayerPlayFilled
                                     color="white"
