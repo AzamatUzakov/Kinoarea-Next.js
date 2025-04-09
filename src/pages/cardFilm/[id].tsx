@@ -26,7 +26,7 @@ const CardFilm: React.FC<CardFilmProps> = () => {
         <>
             <div className="bg-[#1E2538]">
                 <div className="absolute w-full ">
-                    <img alt="fbg" src={`https://image.tmdb.org/t/p/w500${bg}`} className="h-[100vh] bg object-cover" />
+                    <div className="h-[100vh] w-[300px] bg object-cover" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${bg})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: "no-repeat" }}></div>
                 </div>
 
                 <div className="relative  z-10 p-3 xl:py-4 lg:px-20">

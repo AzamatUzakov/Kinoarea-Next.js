@@ -98,7 +98,7 @@ const InfoCard: React.FC<infoCardProps> = () => {
                         </div>
 
                     </div>
-
+                    <p className="font-medium text-[15px] text-white leading-[157%] mt-7">{infoCard.overview}</p>
                     <div className="flex flex-col max-w-full items-center justify-center mx-auto mt-11">
                         <button className="border w-[210px] border-white py-4  flex justify-center gap-1 items-center font-semibold text-white text-[15px] rounded-[10px] cursor-pointer hover:scale-105 transition-transform duration-300">
                             <IoPlayOutline color="white" size={20} className="mb-0.5" />
@@ -149,16 +149,16 @@ const InfoCard: React.FC<infoCardProps> = () => {
                             className="rounded-[10px] max-w-full h-auto"
                         />
                     </div>
-                    <div className="h-[50%]">
+                    <div className="w-[50%]">
                         <div className="text-16px font-medium text-[#4F5B7C] flex items-center gap-2">Главная  <FaAngleRight color="#4F5B7C" size={16} />  Фильмы <FaAngleRight color="#4F5B7C" size={16} />     <span className="text-white">{infoCard.title}</span></div>
-                        <div>
                             <h2 className="text-white font-black text-4xl mt-1">{infoCard.title}</h2>
                             <p className="text-white font-medium text-xl">{infoCard.tagline}</p>
                             <div className="flex   gap-4 mt-4">
                                 <DoughnutChart Kinoarea_reyting={infoCard.vote_average} procents_hindred={10} />
                                 <DoughnutChart Kinoarea_reyting={infoCard.vote_average} procents_hindred={10} />
                             </div>
-                        </div>
+                            <p className="font-medium text-[16px] text-white leading-[157%] mt-7">{infoCard.overview}</p>
+
                     </div>
 
                 </div>
