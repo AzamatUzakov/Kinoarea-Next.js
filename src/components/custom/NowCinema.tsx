@@ -152,7 +152,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                     {<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-4 gap-4 mt-[50px] justify-between w-full">
                         {cinema.slice(0, visibleCount).map((item) => (
                             <div key={item.id} className="relative w-full max-w-[340px] overflow-hidden group cursor-pointer">
-                                <Link href="/cardFilm">
+                                <Link href={`/cardFilm/${item.id}`}>
                                     <div
                                         onMouseEnter={() => handleMouseEnter(item.id, item.backdrop_path)}
                                         onMouseLeave={() => handleMouseLeave(item.id)}

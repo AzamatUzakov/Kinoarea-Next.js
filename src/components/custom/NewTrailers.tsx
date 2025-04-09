@@ -29,10 +29,10 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
 
     const [trailer, setTrailer] = useState<NewTrailersProps[]>([])
 
-    const PopularUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
+    const PopularUrl = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
 
 
-    const [vidoe, setVideo] = useState<string >("")
+    const [stateVideo, setStateVideo] = useState<string >("")
 
 
     useEffect(() => {
@@ -45,13 +45,14 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
     }, [PopularUrl])
 
 
-    const video = (id: number) => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}/videos`)
+    const showMovie = (id: number) => {
+        fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
             .then(res => res.json())
             .then(res => {
-
-                const selectMovie = res.results[0]
-                setVideo(selectMovie)
+                let rnd = Math.floor(Math.random() * res.results.length)
+                const selectMovie = res.results[rnd]
+                
+                setStateVideo(selectMovie)
 
             })
     }
@@ -69,7 +70,7 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                     <p className="flex text-white items-center gap-2 cursor-pointer transition-all duration-150 ease-in font-medium text-lg mt-2  hover:text-gray-300">Все трейлеры <FaArrowRightLong color="white" /></p>
                 </div>
                 <div >
-                    <iframe src={vidoe !== "" ? `https://www.youtube.com/embed/${vidoe?.key}` : "https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT"}
+                    <iframe src={stateVideo !== "" ? `https://www.youtube.com/embed/${stateVideo?.key}` : "https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT"}
                         className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
                     ></iframe>
                     <div className="flex justify-between mt-2">
@@ -112,7 +113,7 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                                 className="group w-[178px] h-[127px] relative cursor-grab bg-no-repeat bg-center bg-cover rounded-[10px] md:w-[200px] md:h-[130px] xl:w-[260px] xl:h-[180px]"
                                 style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})` }}
                                 onClick={() => {
-                                        video(item?.id)
+                                    showMovie(item?.id)
                                 }}
                             >
 
