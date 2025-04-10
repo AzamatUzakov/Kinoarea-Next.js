@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { options } from "@/exports";
 import {
     Sheet,
     SheetContent,
@@ -7,8 +8,9 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
+
+import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { options } from "@/exports";
 
 interface PopularPersonProps {
     adult: boolean;
@@ -44,7 +46,7 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
             <div className="mt-8">
                 <div className="flex justify-center items-center md:flex-col md:items-start md:items-center xl:flex-row xl:justify-between xl:items-center">
                     <h1 className="font-black text-2xl text-white text-nowrap md:text-4xl">Популярные персоны</h1>
-                    <img src="/line.png" alt="line" className="hidden mt-2 xl:block" />
+                    <Image layout="intrinsic" width={70} height={100} src="/line.png" alt="line" className="hidden mt-2 xl:block" />
                     <div className="mb-[4px] md:hidden">
                         <Sheet>
                             <SheetTrigger className="h-7 w-7 flex items-center justify-center rounded-[5px] cursor-pointer transition-all ease-in">
@@ -52,7 +54,7 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
                             </SheetTrigger>
                             <SheetContent side="top" className="bg-[#1e2538c9]">
                                 <SheetHeader>
-                                    <SheetTitle className="text-center mx-auto"><img src="/mainLogo.png" alt="" /></SheetTitle>
+                                    <SheetTitle className="text-center mx-auto"><Image width={800} height={500} src="/mainLogo.png" alt="" /></SheetTitle>
                                     <SheetDescription className="text-center mx-auto mt-3 pb-5">
                                         <ul className="flex flex-col items-center text-sm leading-10 font-semibold text-white">
                                             {yearsArr.map((str, indx) => (

@@ -1,7 +1,7 @@
-import { Checkbox } from "@radix-ui/react-checkbox";
 import { Button } from "../ui/button";
 import { IoLogoVk, IoLogoYoutube } from "react-icons/io5";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import Image from "next/image";
 
 const Footer = () => {
     return (
@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="relative w-full h-full bg-cover  bg-center bg-no-repeat object-cover rounded-[10px] p-5 text-center lg:py-20 lg:items-start" style={{ backgroundImage: "url('/footer-BG.png')" }}>
 
                     <div className="md:w-[70%] mx-auto lg:w-[60%]">
-                        <img src="/footer-logo.png" alt="main-footer-logo" className="mx-auto" />
+                        <Image width={150} height={10} src="/footer-logo.png" alt="main-footer-logo" className="mx-auto" />
                         <h3 className="font-black text-2xl text-white mt-4 mb-5 lg:text-4xl">Подпишитесь на <br className="md:hidden " /> E-mail рассылку</h3>
                         <p className="text-white font-medium text-sm lg:text-xl">Если хотиет быть в курсе последних новостей и новинок кино - заполните форму ниже и оформите бесплатную E-mail рассылку! </p>
                         <form action="" className="mt-7">

@@ -12,6 +12,7 @@ import {
 import { Button } from "../ui/button";
 import { options } from "@/exports";
 import Link from "next/link";
+import Image from "next/image";
 
 interface NowCinemaProps {
     adult: boolean;
@@ -60,12 +61,12 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                 res.genres.forEach((gen: { id: number; name: string }) => {
                     genresMap[gen.id] = gen.name;
                 });
-                setGenres(genresMap);   
+                setGenres(genresMap);
             });
 
 
     }, [NowUrl, generesUrl]);
-  
+
     const getGenresNames = (genreIds: number[]) => {
         return genreIds.map(id => genress[id] || 'Неизвестно').join(', ');
     };
@@ -97,7 +98,8 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                             </SheetTrigger>
                             <SheetContent side="top" className="bg-[#1e2538c9]" >
                                 <SheetHeader>
-                                    <SheetTitle className="text-center mx-auto"><img src="/mainLogo.png" alt="" /></SheetTitle>
+                                    <SheetTitle className="text-center mx-auto"><Image
+                                        width={700} height={300} src="/mainLogo.png" alt="" /></SheetTitle>
                                     <SheetDescription className="text-center mx-auto mt-3 pb-5">
 
                                         <ul className="flex flex-col items-center text-sm leading-10 font-semibold text-white">
@@ -133,7 +135,9 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                             </SheetContent>
                         </Sheet>
                     </div>
-                    <img src="/line.png" alt="line" className="hidden xl:block" />
+                    <Image
+                        width={70} height={10}
+                        src="/line.png" alt="line" className="hidden xl:block" />
                     <div className="hidden md:flex justify-between w-[90%] mt-2 xl:w-[50%]">
                         {generesArr.map((str, indx) => (
                             <div key={indx} className="font-bold text-[15px] text-[#818181c5]">
@@ -158,8 +162,8 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                                         onMouseLeave={() => handleMouseLeave(item.id)}
                                         className="relative group-hover:opacity-80 transition duration-300 rounded-[15px] overflow-hidden"
                                     >
-                                        {/* Адаптивное изображение */}
-                                        <img
+                                        <Image
+                                            width={700} height={300}
                                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                                             alt={item.title}
                                             className="w-full h-auto object-cover transition duration-300 rounded-[15px]"

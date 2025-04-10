@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet"
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 
 const Header = () => {
@@ -25,7 +26,8 @@ const Header = () => {
                             </SheetTrigger>
                             <SheetContent side="top" className="bg-[#1e2538c9]" >
                                 <SheetHeader>
-                                    <SheetTitle className="text-center mx-auto"><img src="/mainLogo.png" alt="" /></SheetTitle>
+                                    <SheetTitle className="text-center mx-auto"><Image width={700} height={300} 
+                                     src="/mainLogo.png" alt="" /></SheetTitle>
                                     <SheetDescription className="text-center mx-auto mt-3 pb-5">
 
                                         <ul className="flex flex-col items-center text-sm leading-10 font-semibold text-white">
@@ -70,7 +72,8 @@ const Header = () => {
                     </div>
 
                     <div className="">
-                        <Link href={"/"}>    <img src="/mainLogo.png" width={"100px"} className="cursor-pointer" alt="mainLogo" /></Link>
+                        <Link href={"/"}>
+                            <Image src="/mainLogo.png" width={100} height={50}  className="cursor-pointer" alt="mainLogo" /></Link>
                         <div className="flex justify-between mt-2 cursor-pointer">
                             <IoLogoVk color="#686868" />
                             <FaInstagram color="#686868" />

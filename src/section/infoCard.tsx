@@ -1,7 +1,11 @@
+import React, { useContext, useEffect, useState } from "react";
+
 import { idCTX } from "@/context/idCTX";
 import { options } from "@/exports";
 import DoughnutChart from "@/others/Charts";
-import React, { useContext, useEffect, useState } from "react";
+
+import Image from "next/image";
+
 import { BiDislike, BiLike } from "react-icons/bi";
 import { FaAngleRight, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa6";
 import { IoHeart, IoLogoVk, IoPlayOutline } from "react-icons/io5";
@@ -9,9 +13,9 @@ import { IoHeart, IoLogoVk, IoPlayOutline } from "react-icons/io5";
 interface infoCardProps {
     adult: boolean;
     backdrop_path: string;
-    belongs_to_collection: BelongsToCollection | null;
+    belongs_to_collection:  null;
     budget: number;
-    genres: Genre[];
+    genres: [];
     homepage: string;
     id: number;
     imdb_id: string;
@@ -21,12 +25,12 @@ interface infoCardProps {
     overview: string;
     popularity: number;
     poster_path: string;
-    production_companies: ProductionCompany[];
-    production_countries: ProductionCountry[];
+    production_companies:[];
+    production_countries:[];
     release_date: string;
     revenue: number;
     runtime: number;
-    spoken_languages: SpokenLanguage[];
+    spoken_languages: [];
     status: string;
     tagline: string;
     title: string;
@@ -85,7 +89,9 @@ const InfoCard: React.FC<infoCardProps> = () => {
 
                     <div className="mt-4 flex justify-between w-[90%]">
 
-                        <img
+                        <Image
+                            width={700}
+                            height={300}
                             src={`https://image.tmdb.org/t/p/w500${infoCard?.poster_path}`}
                             alt={infoCard?.title}
                             className="rounded-[10px] max-w-full h-[310px]"
@@ -143,7 +149,9 @@ const InfoCard: React.FC<infoCardProps> = () => {
                 <div className="hidden   md:flex gap-3" >
 
                     <div className="w-[50%]">
-                        <img
+                        <Image
+                            width={700}
+                            height={300}
                             src={`https://image.tmdb.org/t/p/w500${infoCard?.poster_path}`}
                             alt={infoCard?.title}
                             className="rounded-[10px] max-w-full h-auto"

@@ -1,5 +1,4 @@
 import { options } from "@/exports";
-import { url } from "inspector";
 import React, { useEffect, useState } from "react";
 import { FaArrowRightLong, FaRegComment, FaRegEye } from "react-icons/fa6";
 

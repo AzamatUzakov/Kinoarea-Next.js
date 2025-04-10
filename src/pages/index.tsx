@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../styles/custom.css"
-import Link from "next/link";
 
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";
@@ -30,11 +29,8 @@ export default function Home() {
         <NewTrailers />
         <PopularFilm />
         <PopularPerson />
-        <EndNews/>
+        <EndNews />
         <ExpectedNew />
-
-        {/*         <Link href={"/cardFilm"}>GO</Link>
- */}
 
 
         <Footer />

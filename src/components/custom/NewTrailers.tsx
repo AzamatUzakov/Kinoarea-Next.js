@@ -1,5 +1,4 @@
 import { options } from "@/exports";
-import { ThumbsUp } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { BiDislike, BiLike } from "react-icons/bi";
 import { BsThreeDots } from "react-icons/bs";
@@ -24,6 +23,10 @@ interface NewTrailersProps {
     vote_average: number;
     vote_count: number;
 }
+interface VideoData {
+    key: string;
+    [key: string]: any;
+}
 
 const NewTrailers: React.FC<NewTrailersProps> = () => {
 
@@ -32,7 +35,7 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
     const PopularUrl = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
 
 
-    const [stateVideo, setStateVideo] = useState<string >("")
+    const [stateVideo, setStateVideo] = useState<VideoData | null>(null);
 
 
     useEffect(() => {
@@ -70,7 +73,7 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                     <p className="flex text-white items-center gap-2 cursor-pointer transition-all duration-150 ease-in font-medium text-lg mt-2  hover:text-gray-300">Все трейлеры <FaArrowRightLong color="white" /></p>
                 </div>
                 <div >
-                    <iframe src={stateVideo !== "" ? `https://www.youtube.com/embed/${stateVideo?.key}` : "https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT"}
+                    <iframe src={stateVideo !== null ? `https://www.youtube.com/embed/${stateVideo?.key}` : "https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT"}
                         className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
                     ></iframe>
                     <div className="flex justify-between mt-2">

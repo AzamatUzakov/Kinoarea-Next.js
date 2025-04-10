@@ -1,9 +1,11 @@
-import Footer from "@/components/custom/Footer";
-import Header from "@/components/custom/Header";
 import { useParams } from "next/navigation";
-import React, { createContext, useState } from "react";
-import { idCTX } from './../../context/idCTX';
+import React, {useState } from "react";
+
+import Header from "@/components/custom/Header";
+import Footer from "@/components/custom/Footer";
 import InfoCard from "@/section/infoCard";
+
+import { idCTX } from './../../context/idCTX';
 
 interface CardFilmProps {
 
@@ -12,15 +14,13 @@ interface CardFilmProps {
 const CardFilm: React.FC<CardFilmProps> = () => {
 
 
-    const [bg, setBg] = useState<string>("/defoultBG.png")
+    const [bg, setBg] = useState<string | undefined>("/defoultBG.png")
     const params = useParams() as { id: string };
 
 
 
 
 
-    /*     fetch('https://api.themoviedb.org/3/movie/{}?language=en-US', options)
-     */
     return (
 
         <>
