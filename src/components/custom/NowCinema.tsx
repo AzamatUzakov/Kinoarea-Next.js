@@ -72,7 +72,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
     };
     const handleMouseEnter = (id: number, backdropPath: string) => {
         setHoverStates((prev) => ({ ...prev, [id]: true }));
-        setMainBg(`https://image.tmdb.org/t/p/w500${backdropPath || 'defaultBackdrop.jpg'}`);
+        setMainBg(`https://image.tmdb.org/t/p/original${backdropPath || 'defaultBackdrop.jpg'}`);
     };
 
     const handleMouseLeave = (id: number) => {
