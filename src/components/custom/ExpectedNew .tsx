@@ -130,7 +130,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                     {popular.map((item) => (
                         <SwiperSlide key={item.id}>
                             <div key={item.id} className="relative w-full max-w-[340px] overflow-hidden group cursor-pointer">
-                                <Link href="/cardFilm">
+                                <Link href={`/cardFilm/${item.id}`}>
                                     <div
                                         onMouseEnter={() => handleMouseEnter(item.id)}
                                         onMouseLeave={() => handleMouseLeave(item.id)}

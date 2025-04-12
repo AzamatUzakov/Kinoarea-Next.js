@@ -87,6 +87,7 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
                 <div className="mt-5">
                     <div className=" xl:flex justify-between gap-[20px]">
                         <div className="flex justify-between md:gap-4 xl:w-[70%]">
+
                             <div className="w-[180px] h-[180px] bg-no-repeat bg-cover bg-center rounded-[10px]  pt-[5px] pl-2 pb-3 md:h-[320px] md:w-full lg:h-[400px] xl:h-[100%]" style={{
                                 backgroundImage: person && person[0] && person[0].profile_path
                                     ? `url(https://image.tmdb.org/t/p/w500${person[0].profile_path})`
@@ -136,11 +137,11 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
                                 );
                             })}
 
-                    </div>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        </div >
+            </div >
 
         </>
     );
