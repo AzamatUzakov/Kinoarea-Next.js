@@ -45,7 +45,7 @@ const EndNews: React.FC<EndNewsProps> = () => {
 
                 <div className="w-full mt-5  justify-between xl:flex gap-1">
 
-                    <div className="w-full h-[245px] bg-no-repeat bg-cover relative rounded-[10px] bg-center px-3 py-3  xl:px-5 md:py-10 md:h-[450px] lg:h-[550px] xl:h-[700px] " style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${endNew[0]?.backdrop_path})` }}>
+                    <div className="w-full h-[245px] bg-no-repeat bg-cover relative rounded-[10px] bg-center px-3 py-3  xl:px-5 md:py-10 md:h-[450px] lg:h-[550px] xl:h-[700px] " style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${endNew[0]?.backdrop_path})` }}>
                         <div className="flex flex-col h-full justify-between relative z-30 ">
                             <div className="flex gap-3 items-center"><p className="flex items-center text-white gap-1 font-semibold text-[13px]">15 Апр 2020</p> <p className="flex items-center text-white gap-1 font-semibold text-[13px]"> <FaRegEye size={18} color="white" />242</p><p className="flex items-center text-white gap-1 font-semibold text-[13px]"> <FaRegComment size={18} color="white" />13</p></div>
                             <div> <p className="font-black text-xl text-white  xl:text-[25px]">{endNew[0]?.name}</p>

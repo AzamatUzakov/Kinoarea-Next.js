@@ -57,7 +57,7 @@ const InfoCard: React.FC<infoCardProps> = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?language=en-US`, options);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${params.id}?language=ru-RU`, options);
                 const data = await response.json();
                 setInfoCard(data);
             } catch (error) {

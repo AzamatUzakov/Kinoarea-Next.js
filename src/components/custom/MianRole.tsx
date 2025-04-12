@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Button } from "../ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Cast {
     adult: boolean;
@@ -44,7 +45,7 @@ const MainRole: React.FC = () => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits`, options);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/credits?language=ru-RU`, options);
                 const data = await response.json();
                 setCredits(data);
             } catch (error) {
@@ -62,7 +63,6 @@ const MainRole: React.FC = () => {
     if (!id || !credits) {
         return <div>Loading...</div>;
     }
-    console.log(credits);
 
 
     return (
@@ -79,19 +79,23 @@ const MainRole: React.FC = () => {
 
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full">
                         {credits.cast.slice(0, showMore).map((item) => (
-                            <div
-                                key={item.id}
-                                className="p-2 transition-transform transform hover:scale-105 hover:ease-in-out duration-300"
-                            >
-                                <Image
-                                    width={200}
-                                    height={200}
-                                    className="w-[165px] h-[160px] sm:h-[200px] sm:w-[210px] md:h-[250px] md:w-[280px] xl:h-[230px] xl:w-[310px] 2xl:h-[300px]  cursor-pointer object-cover rounded-[5px] transition-transform duration-300 ease-in-out"
-                                    src={item.profile_path !== null ? `https://image.tmdb.org/t/p/original${item.profile_path}` : "/dontImag.png"}
-                                    alt=""
-                                />
-                                <p className="text-start font-bold text-[18px] text-white">{item.name}</p>
-                            </div>
+                            <Link href={`/actor/${item.id}`}>
+                                <div
+                                    key={item.id}
+                                    className="p-0 transition-transform transform hover:scale-105 hover:ease-in-out duration-300"
+                                >
+                                    <Image
+                                        width={300}
+                                        height={300}
+                                        className="w-[165px] h-[160px] sm:h-[200px] sm:w-[210px] md:h-[250px] md:w-[280px] xl:h-[230px] xl:w-[310px] 2xl:h-[300px]  cursor-pointer object-cover rounded-[5px] transition-transform duration-300 ease-in-out"
+                                        src={item.profile_path !== null ? `https://image.tmdb.org/t/p/original${item.profile_path}` : "/dontImag.png"}
+                                        alt=""
+                                    />
+                                    <p className="text-start font-bold text-[15px] text-white">{item.name}</p>
+                                    <p className="text-start font-medium text-[13px] text-[#FFFFFFB2]">{item.original_name}</p>
+                                    <p className="text-start font-normal text-[11px] text-[#F2F60F]">{item.character}</p>
+                                </div>
+                            </Link>
                         ))}
                     </div>
 
