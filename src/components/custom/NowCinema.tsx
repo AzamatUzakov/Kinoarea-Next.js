@@ -15,22 +15,22 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface NowCinemaProps {
-    adult: boolean;
+    adult?: boolean;
     backdrop_path: string;
     genre_ids: number[];
     id: number;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
+    original_language?: string;
+    original_title?: string;
+    overview?: string;
+    popularity?: number;
+    poster_path?: string;
+    release_date?: string;
+    title?: string;
+    video?: boolean;
     vote_average: number;
-    vote_count: number;
+    vote_count?: number;
     setMainBg: (bg: string) => void;
-    mainBg: string
+    mainBg?: string
 }
 
 
@@ -165,7 +165,7 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                                         <Image
                                             width={700} height={300}
                                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                                            alt={item.title}
+                                            alt={"item.title"}
                                             className="w-full h-auto object-cover transition duration-300 rounded-[15px]"
                                         />
 

@@ -9,14 +9,8 @@ import { idCTX } from './../../context/idCTX';
 import MainRole from "@/components/custom/MianRole";
 import CardFilmTrailer from "@/section/cardFilmTrailer";
 import MoviePosters from "@/section/moviePosters";
-import FootageFilm from "@/section/footageFilm";
-import Collection from "@/section/collection";
 
-interface CardFilmProps {
-
-}
-
-const CardFilm: React.FC<CardFilmProps> = () => {
+const CardFilm: React.FC = () => {
 
 
     const [bg, setBg] = useState<string | undefined>("/defoultBG.png")

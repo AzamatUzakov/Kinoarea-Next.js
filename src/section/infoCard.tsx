@@ -12,38 +12,38 @@ import { IoHeart, IoLogoVk, IoPlayOutline } from "react-icons/io5";
 import { BsThreeDots } from "react-icons/bs";
 import Link from "next/link";
 interface Genres {
-    id: number,
-    name: string
+    id?: number,
+    name?: string
 }
 interface infoCardProps {
-    adult: boolean;
-    backdrop_path: string;
-    belongs_to_collection: null;
-    budget: number;
+    adult?: boolean;
+    backdrop_path?: string;
+    belongs_to_collection?: null;
+    budget?: number;
     genres: Genres[];
-    homepage: string;
-    id: number;
-    imdb_id: string;
+    homepage?: string;
+    id?: number;
+    imdb_id?: string;
     origin_country: string[];
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    production_companies: [];
-    production_countries: [];
-    release_date: string;
-    revenue: number;
-    runtime: number;
-    spoken_languages: [];
-    status: string;
-    tagline: string;
-    title: string;
-    video: boolean;
+    original_language?: string;
+    original_title?: string;
+    overview?: string;
+    popularity?: number;
+    poster_path?: string;
+    production_companies?: [];
+    production_countries?: [];
+    release_date?: string;
+    revenue?: number;
+    runtime?: number;
+    spoken_languages?: [];
+    status?: string;
+    tagline?: string;
+    title?: string; 
+    video?: boolean;
     vote_average: number;
-    vote_count: number;
+    vote_count?: number;
 }
-const InfoCard: React.FC<infoCardProps> = () => {
+const InfoCard: React.FC = () => {
     const [infoCard, setInfoCard] = useState<infoCardProps | null>(null);
 
     const context = useContext(idCTX);
@@ -97,7 +97,7 @@ const InfoCard: React.FC<infoCardProps> = () => {
                             width={700}
                             height={1000}
                             src={`https://image.tmdb.org/t/p/w500${infoCard?.poster_path}`}
-                            alt={infoCard?.title}
+                            alt={"infoCard?.title"}
                             className="rounded-[10px] max-w-[75%] h-auto"
                         />
 
@@ -157,7 +157,7 @@ const InfoCard: React.FC<infoCardProps> = () => {
                                 width={700}
                                 height={300}
                                 src={`https://image.tmdb.org/t/p/w500${infoCard?.poster_path}`}
-                                alt={infoCard?.title}
+                                alt={"infoCard?.title"}
                                 className="rounded-[10px] max-w-full h-auto"
                             />
 
