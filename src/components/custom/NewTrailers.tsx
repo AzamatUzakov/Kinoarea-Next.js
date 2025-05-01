@@ -1,11 +1,13 @@
 import { options } from "@/exports";
 import React, { useEffect, useState } from "react";
-import { BiDislike, BiLike } from "react-icons/bi";
+
+import { MdRemoveRedEye } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { IoLogoVk, IoLogoYoutube } from "react-icons/io5";
 import { TbPlayerPlayFilled } from "react-icons/tb";
+import { BiLike } from "react-icons/bi";
 
 interface NewTrailersProps {
     adult: boolean;
@@ -29,40 +31,58 @@ interface VideoData {
 }
 
 const NewTrailers: React.FC<NewTrailersProps> = () => {
-
+    const PopularUrl = "https://api.themoviedb.org/3/movie/now_playing?language=ru-US&page=1"
     const [trailer, setTrailer] = useState<NewTrailersProps[]>([])
-
-    const PopularUrl = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
-
-
     const [stateVideo, setStateVideo] = useState<VideoData | null>(null);
+    const [ytStats, setYtStats] = useState<{ likeCount?: string; viewCount?: string } | null>(null);
+
 
 
     useEffect(() => {
-
         fetch(PopularUrl, options)
             .then(res => res.json())
             .then(res => setTrailer(res.results)
             )
-
     }, [PopularUrl])
 
 
     const showMovie = (id: number) => {
-        fetch(`https://api.themoviedb.org/3/movie/${id}/videos`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US&page=1`, options)
             .then(res => res.json())
             .then(res => {
                 let rnd = Math.floor(Math.random() * res.results.length)
                 const selectMovie = res.results[rnd]
-                
                 setStateVideo(selectMovie)
 
+
+                fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${selectMovie.key}&key=AIzaSyD7rrx0A_yR-HmvDDSfk2l2U0v9TIIusnE`)
+                    .then(res => res.json())
+                    .then(data => {
+                        const stats = data.items[0]?.statistics;
+                        if (stats) {
+                            setYtStats({ likeCount: stats.likeCount, viewCount: stats.viewCount });
+                        }
+                    })
+                    .catch(err => console.error('Ошибка загрузки статистики YouTube:', err));
             })
     }
 
 
+    console.log(ytStats);
 
 
+    function formatViews(views:string) {
+        const num = parseInt(views, 10);
+        if (isNaN(num)) return "-";
+
+        if (num >= 1_000_000) {
+            return (num / 1_000_000).toFixed(1).replace(".0", "") + " млн";
+        } else if (num >= 1_000) {
+            return (num / 1_000).toFixed(1).replace(".0", "") + " тыс";
+        } else {
+            return num.toString();
+        }
+    }
 
     return (
         <>
@@ -73,13 +93,14 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                     <p className="flex text-white items-center gap-2 cursor-pointer transition-all duration-150 ease-in font-medium text-lg mt-2  hover:text-gray-300">Все трейлеры <FaArrowRightLong color="white" /></p>
                 </div>
                 <div >
-                    <iframe src={stateVideo !== null ? `https://www.youtube.com/embed/${stateVideo?.key}` : "https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT"}
+                    <iframe src={stateVideo !== null ? `https://www.youtube.com/embed/${stateVideo?.key}` : `https://www.youtube.com/embed/55qOCxcLj6o?si=e6mHoqLpZgFRagT`}
                         className="w-full h-[196px] mt-4 rounded-[10px] md:h-[350px] xl:h-[554px] 2xl:h-[754px]"
                     ></iframe>
                     <div className="flex justify-between mt-2">
                         <div>
-                            <h2 className="font-black text-2xl text-white md:text-3xl">Жеки чан </h2>
-                            <div className="flex justify-between mt-3"> <IoLogoVk color="#686868" />
+                            <h2 className="font-black text-2xl text-white md:text-3xl">{stateVideo ? stateVideo?.name : "Жеки чан"} </h2>
+                            <div className="flex justify-between mt-3 w-[200px]">
+                                <IoLogoVk color="#686868" />
                                 <FaInstagram color="#686868" />
                                 <FaFacebookF color="#686868" />
                                 <FaTwitter color="#686868" />
@@ -93,14 +114,14 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                                 <div className="w-[40px] h-[40px] bg-[#1B2133]  flex flex-col items-center justify-center rounded-md transition-all duration-150 ease-in hover:scale-[0.9] text-white  md:w-[50px] md:h-[50px]">
                                     <BiLike size={18} className="mb-[2px]" />
                                 </div>
-                                <span className="text-[12px] leading-none text-white font-normal">3245</span>
+                                <span className="text-[12px] leading-none text-white font-normal">{ytStats?.likeCount ? formatViews(ytStats?.likeCount) : "-"}</span>
                             </div>
 
                             <div className="text-center cursor-pointer">
                                 <div className="w-[40px] h-[40px] bg-[#1B2133]  flex flex-col items-center justify-center rounded-md transition-all duration-150 ease-in hover:scale-[0.9] p-2 text-white  md:w-[50px] md:h-[50px]">
-                                    <BiDislike size={18} className="mb-[2px]" />
+                                    <MdRemoveRedEye size={18} className="mb-[2px]" />
                                 </div>
-                                <span className="text-[12px] text-white font-normal leading-none">313</span>
+                                <span className="text-[12px] text-white font-normal leading-none">{ytStats?.viewCount ? formatViews(ytStats?.viewCount) : "-"}  </span>
                             </div>
                         </div>
                     </div>

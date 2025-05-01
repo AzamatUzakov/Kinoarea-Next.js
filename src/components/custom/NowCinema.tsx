@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
 import "../../styles/custom.css"
 import {
     Sheet,
@@ -13,6 +12,7 @@ import { Button } from "../ui/button";
 import { options } from "@/exports";
 import Link from "next/link";
 import Image from "next/image";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 interface NowCinemaProps {
     adult?: boolean;
