@@ -1,14 +1,14 @@
 import { useParams } from "next/navigation";
 import React, { useState } from "react";
 
-import Header from "@/components/custom/Header";
-import Footer from "@/components/custom/Footer";
-import InfoCard from "@/section/infoCard";
+import Footer from "./../../components/custom/Footer";
+import Header from './../../components/custom/Header';
 
 import { idCTX } from './../../context/idCTX';
-import MainRole from "@/components/custom/MianRole";
-import CardFilmTrailer from "@/section/cardFilmTrailer";
-import MoviePosters from "@/section/moviePosters";
+import CardFilmTrailer from './../../section/cardFilmTrailer';
+import InfoCard from './../../section/infoCard';
+import MoviePosters from './../../section/moviePosters';
+import MainRole from './../../components/custom/MianRole';
 
 const CardFilm: React.FC = () => {
 

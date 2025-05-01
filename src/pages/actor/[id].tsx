@@ -1,8 +1,6 @@
 'use client';
 
-import Footer from "@/components/custom/Footer";
-import Header from "@/components/custom/Header";
-import { options } from "@/exports";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
@@ -12,6 +10,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 //import "../../styles/custom.css"
+import { options } from './../../exports';
+import Header from './../../components/custom/Header';
+import Footer from './../../components/custom/Footer';
 
 interface ActorProps {
     adult: boolean;

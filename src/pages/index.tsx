@@ -1,13 +1,14 @@
 import { useState } from "react";
+import Header from './../components/custom/Header';
 
-import Footer from "@/components/custom/Footer";
-import Header from "@/components/custom/Header";
-import NowCinema from "@/components/custom/NowCinema";
-import NewTrailers from "@/components/custom/NewTrailers";
-import PopularFilm from "@/components/custom/PopularFilm";
-import PopularPerson from "@/components/custom/PopularPerson";
-import ExpectedNew from "@/components/custom/ExpectedNew ";
-import EndNews from "@/components/custom/EndNews";
+import Footer from './../components/custom/Footer';
+import NowCinema from './../components/custom/NowCinema';
+import NewTrailers from './../components/custom/NewTrailers';
+import PopularFilm from './../components/custom/PopularFilm';
+import PopularPerson from './../components/custom/PopularPerson';
+import EndNews from './../components/custom/EndNews';
+import ExpectedNew from './../components/custom/ExpectedNew ';
+
 
 
 export default function Home() {
