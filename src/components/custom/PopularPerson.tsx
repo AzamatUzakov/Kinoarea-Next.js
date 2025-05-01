@@ -13,14 +13,14 @@ import Image from "next/image";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 interface PopularPersonProps {
-    adult: boolean;
-    gender: number;
-    id: number;
-    known_for_department: string;
-    name: string;
-    original_name: string;
-    popularity: number;
-    profile_path: string;
+    adult?: boolean;
+    gender?: number;
+    id?: number;
+    known_for_department?: string;
+    name?: string;
+    original_name?: string;
+    popularity?: number;
+    profile_path?: string;
 }
 
 const yearsArr: string[] = ["За год", "За месяц", "За неделю"];

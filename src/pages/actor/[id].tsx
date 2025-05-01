@@ -11,7 +11,7 @@ import { IoHeart } from "react-icons/io5";
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import "../../styles/custom.css"
+//import "../../styles/custom.css"
 
 interface ActorProps {
     adult: boolean;

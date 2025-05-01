@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "../styles/custom.css"
 
 import Footer from "@/components/custom/Footer";
 import Header from "@/components/custom/Header";

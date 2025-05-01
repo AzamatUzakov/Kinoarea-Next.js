@@ -10,20 +10,20 @@ import { TbPlayerPlayFilled } from "react-icons/tb";
 import { BiLike } from "react-icons/bi";
 
 interface NewTrailersProps {
-    adult: boolean;
-    backdrop_path: string;
-    genre_ids: number[];
-    id: number;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
+    adult?: boolean;
+    backdrop_path?: string;
+    genre_ids?: number[];
+    id?: number;
+    original_language?: string;
+    original_title?: string;
+    overview?: string;
+    popularity?: number;
+    poster_path?: string;
+    release_date?: string;
+    title?: string;
+    video?: boolean;
+    vote_average?: number;
+    vote_count?: number;
 }
 interface VideoData {
     key: string;
@@ -137,7 +137,7 @@ const NewTrailers: React.FC<NewTrailersProps> = () => {
                                 className="group w-[178px] h-[127px] relative cursor-grab bg-no-repeat bg-center bg-cover rounded-[10px] md:w-[200px] md:h-[130px] xl:w-[260px] xl:h-[180px]"
                                 style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${item.backdrop_path})` }}
                                 onClick={() => {
-                                    showMovie(item?.id)
+                                    showMovie(item?.id as number)
                                 }}
                             >
 

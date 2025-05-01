@@ -3,20 +3,20 @@ import React, { useEffect, useState } from "react";
 import { FaArrowRightLong, FaRegComment, FaRegEye } from "react-icons/fa6";
 
 interface EndNewsProps {
-    adult: boolean;
-    backdrop_path: string;
-    first_air_date: string;
-    genre_ids: number[];
-    id: number;
-    name: string;
-    origin_country: string[];
-    original_language: string;
-    original_name: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    vote_average: number;
-    vote_count: number;
+    adult?: boolean;
+    backdrop_path?: string;
+    first_air_date?: string;
+    genre_ids?: number[];
+    id?: number;
+    name?: string;
+    origin_country?: string[];
+    original_language?: string;
+    original_name?: string;
+    overview?: string;
+    popularity?: number;
+    poster_path?: string;
+    vote_average?: number;
+    vote_count?: number;
 }
 
 const EndNews: React.FC<EndNewsProps> = () => {
@@ -56,12 +56,12 @@ const EndNews: React.FC<EndNewsProps> = () => {
 
                     </div>
 
-                    <div className="overflow-x-auto webkit mt-5 xl:overflow-y-auto xl:mt-0 ">
-                        <div className="flex flex-nowrap gap-3 w-max xl:flex-col xl:w-[300px] xl:h-[700px] ">
+                    <div className="overflow-x-auto webkit mt-5 xl:overflow-y-auto xl-[20%] xl:mt-0 ">
+                        <div className="flex flex-nowrap gap-3 xl:flex-col w-[100%]  xl:h-[700px] ">
                             {endNew.slice(1, endNew.length).map((i) => (
                                 <div
                                     key={i.id}
-                                    className="w-[180px] h-[128px] md:w-[210px] md:h-[148px] xl:w-[300px] xl:h-[180px]  bg-no-repeat bg-cover rounded-[10px] bg-center p-3 shrink-0 relative"
+                                    className="w-[180px] h-[128px] md:w-[210px] md:h-[148px] xl:w-[100%] xl:h-[180px]  bg-no-repeat bg-cover rounded-[10px] bg-center p-3 shrink-0 relative"
                                     style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${i?.backdrop_path})` }}
                                 >
                                     <div className="absolute inset-0 bg-black opacity-20 rounded-[10px]"></div>

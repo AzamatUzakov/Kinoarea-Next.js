@@ -11,20 +11,20 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface ExpectedNewProps {
-    adult: boolean;
-    backdrop_path: string;
-    genre_ids: number[];
-    id: number;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
+    adult?: boolean;
+    backdrop_path?: string;
+    genre_ids?: number[];
+    id?: number;
+    original_language?: string;
+    original_title?: string;
+    overview?: string;
+    popularity?: number;
+    poster_path?: string;
+    release_date?: string;
+    title?: string;
+    video?: boolean;
+    vote_average?: number;
+    vote_count?: number;
 }
 
 
@@ -132,26 +132,26 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                             <div key={item.id} className="relative w-full max-w-[340px] overflow-hidden group cursor-pointer">
                                 <Link href={`/cardFilm/${item.id}`}>
                                     <div
-                                        onMouseEnter={() => handleMouseEnter(item.id)}
-                                        onMouseLeave={() => handleMouseLeave(item.id)}
+                                        onMouseEnter={() => handleMouseEnter(item.id as number)}
+                                        onMouseLeave={() => handleMouseLeave(item.id as number)}
                                         className="relative group-hover:opacity-80 transition duration-300 rounded-[15px] overflow-hidden"
                                     >
                                         <Image 
                                             width={600}
                                             height={300}
                                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                                            alt={item.title}
+                                            alt={"item.title"}
                                             className="w-full h-auto object-cover transition duration-300 rounded-[15px]"
                                         />
 
                                         <div className="absolute inset-0 bg-[#3657CB]/70 opacity-0 group-hover:opacity-100 transition duration-300 rounded-[15px]"></div>
 
                                         <div
-                                            className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${hoverStates[item.id] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+                                            className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${hoverStates[item.id as number] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
                                                 }`}
                                         >
                                             <Button
-                                                className={`max-w-full cursor-pointer bg-white text-[#3657CB] font-bold text-sm py-[22px] transition-all duration-500 ease-out hover:scale-[0.9] hover:bg-white ${hoverStates[item.id] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                                                className={`max-w-full cursor-pointer bg-white text-[#3657CB] font-bold text-sm py-[22px] transition-all duration-500 ease-out hover:scale-[0.9] hover:bg-white ${hoverStates[item.id as number] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                                                     }`}
                                             >
                                                 Карточка фильма
@@ -160,19 +160,19 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                                     </div>
 
                                     <div
-                                        className={`absolute top-2 right-2 text-white text-sm font-bold rounded-[8px] px-2 py-[2px] z-10 ${item.vote_average > 6
+                                        className={`absolute top-2 right-2 text-white text-sm font-bold rounded-[8px] px-2 py-[2px] z-10 ${item.vote_average as number > 6
                                                 ? "bg-[#34EA16]"
                                                 : item.vote_average === 6
                                                     ? "bg-[#89CB36]"
                                                     : "bg-[#CB6C36]"
                                             }`}
                                     >
-                                        {item.vote_average.toFixed(1)}
+                                        {(item.vote_average as number).toFixed(1) }
                                     </div>
                                     <div className="px-2 pb-3 pt-2 z-10">
                                         <p className="text-white text-[16px] font-bold leading-[20px] truncate">{item.title}</p>
 
-                                        <p className="text-[#F2F60F] text-[14px] truncate">{getGenresNames(item.genre_ids)}</p>
+                                        <p className="text-[#F2F60F] text-[14px] truncate">{getGenresNames(item.genre_ids ?? [])}</p>
                                     </div>
                                 </Link>
                             </div>
