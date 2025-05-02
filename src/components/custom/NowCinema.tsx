@@ -170,12 +170,12 @@ const NowCinema: React.FC<NowCinemaProps> = ({ setMainBg }) => {
                                         onMouseLeave={() => handleMouseLeave(item.id as number)}
                                         className="relative group-hover:opacity-80 transition duration-300 rounded-[15px] overflow-hidden"
                                     >
-                                        <Image
+                                        {/*    <Image
                                             width={700} height={300}
                                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                                             alt={"item.title"}
                                             className="w-full h-auto object-cover transition duration-300 rounded-[15px]"
-                                        />
+                                        /> */}
 
                                         <div className="absolute inset-0 bg-[#3657CB]/70 opacity-0 group-hover:opacity-100 transition duration-300 rounded-[15px]"></div>
 
