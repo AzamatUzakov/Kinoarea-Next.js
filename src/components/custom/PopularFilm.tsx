@@ -55,7 +55,7 @@ const PopularFilm: React.FC<PopularFilmProps> = () => {
     const swiperRef = useRef<any>(null);
 
     const popularUrl = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-    const generesUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=en';
+    const generesUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=ru';
 
     useEffect(() => {
         fetch(popularUrl, options)

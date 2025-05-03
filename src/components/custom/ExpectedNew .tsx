@@ -34,8 +34,8 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
     const [activeSlide, setActiveSlide] = useState(0);
     const [genress, setGenres] = useState<{ [key: number]: string }>({});
 
-    const popularUrl = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
-    const generesUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
+    const popularUrl = "https://api.themoviedb.org/3/movie/upcoming?language=ru-US&page=1";
+    const generesUrl = "https://api.themoviedb.org/3/genre/movie/list?language=ru";
 
     useEffect(() => {
         fetch(popularUrl, options)
@@ -80,7 +80,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                 <h1 className="font-black text-2xl text-white text-nowrap md:text-4xl">Ожидаемые новинки</h1>
                 <div className="flex justify-center mt-5 gap-4 cursor-pointer md:mt-2">
                     <div ref={prevRef}
->
+                    >
                         <FaArrowLeftLong
                             color="white"
                             size={20}
@@ -136,7 +136,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                                         onMouseLeave={() => handleMouseLeave(item.id as number)}
                                         className="relative group-hover:opacity-80 transition duration-300 rounded-[15px] overflow-hidden"
                                     >
-                                        <Image 
+                                        <Image
                                             width={600}
                                             height={300}
                                             src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
@@ -161,13 +161,13 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
 
                                     <div
                                         className={`absolute top-2 right-2 text-white text-sm font-bold rounded-[8px] px-2 py-[2px] z-10 ${item.vote_average as number > 6
-                                                ? "bg-[#34EA16]"
-                                                : item.vote_average === 6
-                                                    ? "bg-[#89CB36]"
-                                                    : "bg-[#CB6C36]"
+                                            ? "bg-[#34EA16]"
+                                            : item.vote_average === 6
+                                                ? "bg-[#89CB36]"
+                                                : "bg-[#CB6C36]"
                                             }`}
                                     >
-                                        {(item.vote_average as number).toFixed(1) }
+                                        {(item.vote_average as number).toFixed(1)}
                                     </div>
                                     <div className="px-2 pb-3 pt-2 z-10">
                                         <p className="text-white text-[16px] font-bold leading-[20px] truncate">{item.title}</p>

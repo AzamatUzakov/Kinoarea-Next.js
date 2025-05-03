@@ -29,7 +29,7 @@ const PopularPerson: React.FC<PopularPersonProps> = () => {
     const [actText, setActText] = useState<null | string | number>(0);
     const [person, setPerson] = useState<PopularPersonProps[]>([])
 
-    const personUrl = "https://api.themoviedb.org/3/person/popular?language=en-US&page=1"
+    const personUrl = "https://api.themoviedb.org/3/person/popular?language=ru-US&page=1"
 
 
     useEffect(() => {

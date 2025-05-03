@@ -45,7 +45,7 @@ const EndNews: React.FC<EndNewsProps> = () => {
 
                 <div className="w-full mt-5  justify-between xl:flex gap-1">
 
-                    <div className="w-full h-[245px] bg-no-repeat bg-cover relative rounded-[10px] bg-center px-3 py-3  xl:px-5 md:py-10 md:h-[450px] lg:h-[550px] xl:h-[700px] xl:w-[80%] " style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${endNew[0]?.backdrop_path})` }}>
+                    <div className="w-full h-[245px] bg-no-repeat bg-cover relative rounded-[10px] bg-center px-3 py-3 md:w-[80%]  xl:px-5 md:py-10 md:h-[450px] lg:h-[550px] xl:h-[700px] xl:w-[80%] " style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${endNew[0]?.backdrop_path})` }}>
                         <div className="flex flex-col h-full justify-between relative z-30 ">
                             <div className="flex gap-3 items-center"><p className="flex items-center text-white gap-1 font-semibold text-[13px]">15 Апр 2020</p> <p className="flex items-center text-white gap-1 font-semibold text-[13px]"> <FaRegEye size={18} color="white" />242</p><p className="flex items-center text-white gap-1 font-semibold text-[13px]"> <FaRegComment size={18} color="white" />13</p></div>
                             <div> <p className="font-black text-xl text-white  xl:text-[25px]">{endNew[0]?.name}</p>
@@ -56,12 +56,12 @@ const EndNews: React.FC<EndNewsProps> = () => {
 
                     </div>
 
-                    <div className="overflow-x-auto webkit mt-5 xl:overflow-y-auto xl-[20%] xl:mt-0 ">
+                    <div className="overflow-x-auto webkit mt-5 md:w-[20%] xl:overflow-y-auto xl-[20%] xl:mt-0 ">
                         <div className="flex flex-nowrap gap-3 xl:flex-col w-[100%]  xl:h-[700px] ">
                             {endNew.slice(1, endNew.length).map((i) => (
                                 <div
                                     key={i.id}
-                                    className="w-[180px] h-[128px] md:w-[210px] md:h-[148px] xl:w-[100%] xl:h-[180px]  bg-no-repeat bg-cover rounded-[10px] bg-center p-3 shrink-0 relative"
+                                    className="w-[180px] h-[128px] md:w-[100%] md:h-[148px] xl:w-[100%] xl:h-[180px]  bg-no-repeat bg-cover rounded-[10px] bg-center p-3 shrink-0 relative"
                                     style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${i?.backdrop_path})` }}
                                 >
                                     <div className="absolute inset-0 bg-black opacity-20 rounded-[10px]"></div>
