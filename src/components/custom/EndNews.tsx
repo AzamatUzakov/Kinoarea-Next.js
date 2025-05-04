@@ -33,7 +33,7 @@ const EndNews: React.FC<EndNewsProps> = () => {
             )
     }, [endNewsUrl])
 
-   
+
     return (
         <>
             <div className="mt-8">
@@ -52,18 +52,18 @@ const EndNews: React.FC<EndNewsProps> = () => {
                                 <p className="hidden text-white font-medium text-[16px] md:flex mt-4 xl:text-[20px] ">{endNew[0]?.overview}</p>
                             </div>
                         </div>
-                                    <div className="absolute inset-0 bg-black opacity-20 rounded-[10px]"></div>
+                        <div className="absolute inset-0 bg-black opacity-20 rounded-[10px]"></div>
 
                     </div>
 
                     <div className="overflow-x-auto webkit mt-5 md:w-[20%] xl:overflow-y-auto xl-[20%] xl:mt-0 ">
                         <div className="flex flex-nowrap gap-3 xl:flex-col w-[100%]  xl:h-[700px] ">
                             {endNew.slice(1, endNew.length).map((i) => (
-                               /*  <div
+                                <div
                                     key={i.id}
                                     className="w-[180px] h-[128px] md:w-[100%] md:h-[148px] xl:w-[100%] xl:h-[180px]  bg-no-repeat bg-cover rounded-[10px] bg-center p-3 shrink-0 relative"
                                     style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${i?.backdrop_path})` }}
-                                > */
+                                >
                                     <div className="absolute inset-0 bg-black opacity-20 rounded-[10px]"></div>
                                     <div className="flex flex-col h-full justify-between relative z-10">
                                         <p className="flex items-center text-white gap-1 font-bold text-[12px]">15 Апр 2020</p>
