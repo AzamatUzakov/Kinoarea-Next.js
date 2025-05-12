@@ -2,7 +2,7 @@
 
 Веб-приложение для просмотра фильмов и получения подробной информации о них.
 
-**Демо:** [https://kino-area-by-litakk.netlify.app](https://kino-area-by-litakk.netlify.app)
+**Демо:** [https://kinoarea-next-js.vercel.app/](https://kinoarea-next-js.vercel.app/)
 
 ## 📚 Описание проекта
 
@@ -50,7 +50,7 @@ npm run dev
 
 🚀 Деплой
 Проект развернут на Netlify:
-https://kino-area-by-litakk.netlify.app
+https://kinoarea-next-js.vercel.app/
 
 📄 Документация проекта
 Архитектура
