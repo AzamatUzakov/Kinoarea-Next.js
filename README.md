@@ -66,7 +66,7 @@ const airingTodayUrl =
 ## 🚀 Deployment
 
 This project is deployed using [Vercel](https://vercel.com/):  
-🔗 [kino-area-by-litak.vercel.app](https://kino-area-by-litak.vercel.app/)
+🔗 [kino-area-by-litak.vercel.app](https://kinoarea-next-js.vercel.app/)
 
 ## 📄 Project Architecture
 
