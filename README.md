@@ -1,4 +1,4 @@
-# 🎬 Kino Area by Azamat
+<!-- # 🎬 Kino Area by Azamat
 
 A modern web application for browsing movies and viewing detailed information about them.
 
@@ -92,3 +92,4 @@ This project is deployed using [Vercel](https://vercel.com/):
 
 **Author:** Azamat  
 **GitHub:** [https://github.com/AzamatUzakov](https://github.com/AzamatUzakov)
+ -->
