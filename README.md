@@ -42,7 +42,7 @@ const airingTodayUrl =
 
    ```bash
    git clone https://github.com/AzamatUzakov/Kinoarea-Next.js.git
-   cd kino-area-by-litak
+   cd kino-area
    ```
 
 2. **Install dependencies:**
