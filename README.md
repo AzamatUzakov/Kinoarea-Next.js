@@ -2,7 +2,7 @@
 
 A modern web application for browsing movies and viewing detailed information about them.
 
-**🔗 Live Demo:** [kino-area-by-litak.vercel.app](https://kinoarea-next-js.vercel.app/)
+**🔗 Live Demo:** [kinoarea-next-js.vercel.app/](https://kinoarea-next-js.vercel.app/)
 
 ## 📚 Project Description
 
