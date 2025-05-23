@@ -37,7 +37,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
     const popularUrl = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
     const generesUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
 
-    /* useEffect(() => {
+    useEffect(() => {
         fetch(popularUrl, options)
             .then((res) => res.json())
             .then((res) => {
@@ -54,7 +54,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                 setGenres(genresMap);
             });
     }, [popularUrl, generesUrl]);
- */
+
     const getGenresNames = (genreIds: number[]) => {
         return genreIds.map((id) => genress[id] || "Неизвестно").join(", ");
     };
