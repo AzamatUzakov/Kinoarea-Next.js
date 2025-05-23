@@ -34,10 +34,10 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
     const [activeSlide, setActiveSlide] = useState(0);
     const [genress, setGenres] = useState<{ [key: number]: string }>({});
 
-    const popularUrl = "https://api.themoviedb.org/3/movie/upcoming?language=ru-US&page=1";
-    const generesUrl = "https://api.themoviedb.org/3/genre/movie/list?language=ru";
+    const popularUrl = "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
+    const generesUrl = "https://api.themoviedb.org/3/genre/movie/list?language=en";
 
-    useEffect(() => {
+    /* useEffect(() => {
         fetch(popularUrl, options)
             .then((res) => res.json())
             .then((res) => {
@@ -54,7 +54,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                 setGenres(genresMap);
             });
     }, [popularUrl, generesUrl]);
-
+ */
     const getGenresNames = (genreIds: number[]) => {
         return genreIds.map((id) => genress[id] || "Неизвестно").join(", ");
     };
@@ -77,7 +77,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
     return (
         <div className="mt-[60px] mb-11">
             <div className="flex flex-col justify-between items-center md:flex-row md:items-center xl:flex-row xl:justify-between xl:items-center">
-                <h1 className="font-black text-2xl text-white text-nowrap md:text-4xl">Ожидаемые новинки</h1>
+                <h1 className="font-black text-2xl  text-white text-nowrap md:text-4xl">Ожидаемые новинки</h1>
                 <div className="flex justify-center mt-5 gap-4 cursor-pointer md:mt-2">
                     <div ref={prevRef}
                     >
@@ -176,6 +176,7 @@ const ExpectedNew: React.FC<ExpectedNewProps> = () => {
                                     </div>
                                 </Link>
                             </div>
+
                         </SwiperSlide>
                     ))}
                 </Swiper>
